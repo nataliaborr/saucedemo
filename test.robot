@@ -2,6 +2,7 @@
 Documentation    Suite description
 Resource    C:/development/robot-scripts/saucedemo/Resources/keywords.robot
 Resource    C:/development/robot-scripts/saucedemo/Resources/begin_end.robot
+Resource    C:/development/robot-scripts/saucedemo/Resources/locked_out.robot
 Library  SeleniumLibrary
 Library     String
 Test Setup    Begin Web Test
@@ -20,9 +21,9 @@ ${PROD_N_2}    5
 
 
 *** Test Cases ***
-E2E Order Test
+E2E Order with standard user
     [Tags]    test_standard_user
-    Login
+    Login       ${USERS}[0]
     Choose products     ${PRODUCTS}[${PROD_N_1}]    ${PRODUCTS}[${PROD_N_2}]
     Shopping Cart
     Checkout
@@ -30,3 +31,10 @@ E2E Order Test
     Imports
     End of the order
     Back to products
+    Logout
+
+
+Login with locked out user
+    [Tags]    test_locked_out_user
+    Login       ${USERS}[1]
+    Error Message

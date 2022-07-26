@@ -6,8 +6,6 @@ Begin Web Test
 
 
 End Web Test
-    click button    id=react-burger-menu-btn
-    click element   id=logout_sidebar_link
     Close browser
 
 
