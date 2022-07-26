@@ -1,6 +1,6 @@
 *** Keywords ***
 Login
-    Input Text  id=user-name    ${USER}[0]
+    Input Text  id=user-name    ${USERS}[0]
     Input Text  id=password    ${PASSWORD}
     click button    id=login-button
 
@@ -25,9 +25,31 @@ Continue
     Input Text  id=postal-code    ${postalcode}
     Click Button    id=continue
 
+Shopping Cart
+    ${numberofitemsstr}  Get Text  xpath=//*[@id="shopping_cart_container"]/a/span
+    Should be equal     ${numberofitemsstr}     2
+    click element   id=shopping_cart_container
+
+
 Checkout
     Wait Until Element Is Enabled   id=checkout
     Click Button    id=checkout
+
+Import
+    ${firstitemstring}    Get Text  xpath=//*[@id="checkout_summary_container"]/div/div[1]/div[3]/div[2]/div[2]/div
+    ${firstitem}    fetch from right  ${firstitemstring}  $
+	${first}	Convert To Number	${firstitem}
+    ${seconditemstring}    Get Text  //*[@id="checkout_summary_container"]/div/div[1]/div[4]/div[2]/div[2]/div
+    ${seconditem}    fetch from right  ${seconditemstring}  $
+	${second}	Convert To Number	${seconditem}
+	${total}    Evaluate  ${first} + ${second}
+    ${itemtotalstring}    Get Text  xpath=//*[@id="checkout_summary_container"]/div/div[2]/div[5]
+    ${itemtotal}    fetch from right  ${itemtotalstring}  $
+	${order}	Convert To Number  ${itemtotal}
+    Should be equal		${order}	  ${total}
+
+
+
 
 End of the order
     Click Button    id=finish
