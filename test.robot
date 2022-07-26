@@ -1,3 +1,10 @@
+#Download test.robot file and Resources directory from repository set in
+#https://github.com/nataliaborr/saucedemo.git.
+#To run the script I lauch this command on PyCharm:
+#robot -d Results test.robot
+#from the path C:\development\robot-scripts\saucedemo>
+
+
 *** Settings ***
 Documentation    Suite description
 Resource    C:/development/robot-scripts/saucedemo/Resources/keywords.robot
