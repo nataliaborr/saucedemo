@@ -1,4 +1,4 @@
-#Download test.robot file and Resources directory from repository set in
+#To run the tests you need  test.robot file and Resources directory from repository set in
 #https://github.com/nataliaborr/saucedemo.git.
 #To run the script I lauch this command on PyCharm:
 #robot -d Results test.robot
